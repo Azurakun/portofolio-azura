@@ -1,0 +1,19 @@
+
+html, body {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-width: none; /* For Firefox */
+  }
+
+  #navbar {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .hidden-navbar {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  
+  body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+  }
