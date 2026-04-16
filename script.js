@@ -245,10 +245,17 @@ function initMobileMenu() {
    ───────────────────────────────────────────────────────────── */
 
 /**
- * Adds the 'revealed' class to elements with class 'reveal'
+ * Adds 'js-loaded' class to <body> immediately, which activates the
+ * CSS scroll-reveal hiding (opacity: 0). Without this, .reveal elements
+ * are always fully visible as a no-JS fallback — keeping the site
+ * readable even when JS hasn't executed yet.
+ *
+ * Then adds the 'revealed' class to elements with class 'reveal'
  * when they enter the viewport, triggering CSS transitions.
  */
 function initScrollReveal() {
+  // Signal to CSS that JS is active — enables the reveal animation system
+  document.body.classList.add('js-loaded');
   const revealEls = document.querySelectorAll('.reveal');
   if (!revealEls.length) return;
 

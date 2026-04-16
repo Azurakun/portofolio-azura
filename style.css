@@ -199,14 +199,26 @@ ul {
 
 /* ─────────────────────────────────────────────────────────────
    4. SCROLL-REVEAL ANIMATION BASE
+   .js-loaded is added to <body> by script.js on DOMContentLoaded.
+   This ensures elements are ALWAYS visible if JS hasn't run yet
+   (e.g. slow connections, JS errors). Only when JS is confirmed
+   loaded do we hide elements and animate them in.
    ───────────────────────────────────────────────────────────── */
+
+/* Default: fully visible (no JS fallback) */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.reveal.revealed {
+/* JS is loaded → enable the hidden + animated state */
+body.js-loaded .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+body.js-loaded .reveal.revealed {
   opacity: 1;
   transform: translateY(0);
 }
